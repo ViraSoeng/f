@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<title>Calculate</title>
+<link rel="stylesheet" href="form.css">
+
+
+ 
+<script src="jquery-3.4.1.js"></script>
+
+<script type="text/javascript" src="calculate.js"></script>
+<script>
+    $(function() {
+
+        var arr = new Array();
+
+        arr = [{
+                fname: 'dara',
+                lname: 'soeng',
+                gender: 'Male',
+                date: '2019-08-25'
+            },
+            {
+                fname: 'Vyna',
+                lname: 'ka',
+                gender: 'Male',
+                date: '2019-08-25'
+            }
+        ];
+        var columH = $('table').find('th').length;
+        console.log(arr);
+        $('#show').click(function() {
+            $(this).attr('disabled', true);
+            cell(arr.length, columH);
+        });
+        $('#add').click(function() {
+            add();
+           clear();
+            $('#show').attr('disabled', false);
+
+        })
+
+        function clear(){
+            $('select,input').val(String.empty);
+        }
+
+        function add() {
+            if($('#fname').val() == ""){
+                alert('Do not blank');
+            }else{
+                var obj1 = new Object();
+                obj1.fname = $('#fname').val();
+                obj1.lname = $('#lname').val();
+                obj1.gender = $('select#gender').children("option:selected").val();
+                obj1.date = $('#date').val();
+                arr.push(obj1);
+            }
+        }
+
+        function cell_1() {
+            
+                var gIdTable = document.getElementById('table1');
+                var _row = document.createElement('tr');
+                var name = document.createElement('td');
+                var surname = document.createElement('td');
+                var gen = document.createElement('td');
+                var dat = document.createElement('td');
+                name.innerText = $('#fname').val();
+                surname.innerText = $('#lname').val();
+                gen.innerText = $('select#gender').children("option:selected").val();
+                dat.innerText = $('#date').val();
+
+                _row.appendChild(name);
+                _row.appendChild(surname);
+                _row.appendChild(gen);
+                _row.appendChild(dat);
+
+                gIdTable.appendChild(_row);
+        }
+
+        function cell(row, colum) {
+            if ((row == 0) || (colum == 0)) {
+                return 0;
+            }
+
+            for (i = 0; i < row; i++) {
+                var gIdTable = document.getElementById('table1');
+                var _row = document.createElement('tr');
+                a = Object.values(arr[i]);
+                for (j = 0; j < colum; j++) {
+                    var col = document.createElement('td');
+                    col.innerText = a[j];
+                    console.log(a);
+                    _row.appendChild(col);
+                }
+                gIdTable.appendChild(_row);
+            }
+        }
+
+
+    });
+
+</script>
+
+<body>
+    <div id="H">
+        <div class="divtable">
+            <div><img src="pf1.png" alt="pf"></div>
+            <div class="m"><label>First-Name : </label><input type="text" name="input" id="fname"></div>
+            <div class="m"><label>Last-Name : </label><input type="text" name="input" id="lname"></div>
+            <div class="m"><label>Gender : </label><select name="cars" id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div class="m"><label>Date-of-birth : </label><input type="date" id="date" name="trip-start" value="2019-07-22" min="1900-01-01" max="2019-12-31"></div>
+            <button type="submit" id="add">Submit</button>
+            <button type="button" id="show">Show</button>
+        </div>
+
+        <div class="divtable">
+            <table id="table1">
+                <tr>
+                    <th>First-Name</th>
+                    <th>Last-Name</th>
+                    <th>Gender</th>
+                    <th>DateOfBirth</th>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+   
+</body>
+
+</html>

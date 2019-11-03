@@ -1,0 +1,38 @@
+table, th, td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+table{
+    width: 100%;
+}
+
+.divtable{
+    width: 48%;
+    display: inline-block;
+    border: 1px solid black;
+    margin: 5px;
+    text-align: center;
+}
+input,select{
+    width: 150px;
+    margin-left: 20px;
+    
+}
+button{
+    margin-bottom: 5px;
+}
+label{
+  
+}
+.m{  
+    margin-bottom: 10px;
+   
+}
+#H{
+    
+    width: 51%;
+    background-color: aliceblue;
+    display: flex;
+    flex-wrap: wrap;
+}
